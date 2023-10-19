@@ -1,0 +1,21 @@
+
+  <div class="container">
+    <h1 class="my-4">Lista de Materias y Notas</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Materia</th>
+          <th scope="col">Nota</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let nota of notas | keyvalue"> <!-- Usamos keyvalue para iterar sobre un objeto -->
+            <td>{{ nota.key }}</td> <!-- Muestra el nombre de la materia -->
+            <td>{{ nota.value }}</td> <!-- Muestra la nota del alumno en esa materia -->
+          </tr>
+      </tbody>
+    </table>
+
+    <button class="btn btn-success"  [routerLink]="['/alumno-perfil']">volver</button>
+
+  </div>

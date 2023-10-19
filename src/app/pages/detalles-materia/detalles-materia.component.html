@@ -1,0 +1,28 @@
+<body>
+    <div class="container mt-4">
+      <h3></h3>
+      <div class="card mt-3">
+        <div class="card-header">
+          Alumnos inscritos en la materia
+        </div>
+        <div class="container mt-4">
+          <h3>Alumnos inscritos en la materia "{{ materia.name }}"</h3>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let alumno of materia.alumnos">
+              <div class="row">
+                <div class="col-md-6">
+                  <span>{{ alumno?.firstname }}</span>
+                </div>
+                <div class="col-md-6">
+                  <span>{{ alumno?.lastname }}</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      <button class="btn btn-primary" (click)="irProfesorPerfil()">Volver al Perfil de Profesor</button>
+    </div>
+
+  </body>

@@ -1,0 +1,31 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">Actualizar Usuario</h3>
+    <form (ngSubmit)= "onSubmit()" >
+  
+        <div class="form-group">
+            <label>nombre:</label>
+            <input type="text" name="nombre" id="nombre" class="form-control"[(ngModel)]="alumno.firstname">
+        </div>
+        <div class="form-group">
+            <label>apellido:</label>
+            <input type="text" name="apellido" id="apellido" class="form-control" [(ngModel)]="alumno.lastname">
+        </div>
+        <div class="form-group">
+          <label>email:</label>
+          <input type="text" name="email" id="email" class="form-control" [(ngModel)]="alumno.email"> 
+      </div>
+        <div class="form-group">
+            <label>password:</label>
+            <input type="password"  name="contrasenia" id="contrasenia" class="form-control" [(ngModel)]="alumno.password"> 
+        </div>
+  
+      
+        <button type="submit" class="btn btn-primary">Actualizar Usuario</button>
+        <button type="reset" class="btn btn-danger">limpiar</button>
+        <div class="mt-3">
+            <button *ngIf="rol === 'alumno'" class="btn btn-primary" (click)="irAlumnoPerfil()">Volver al Perfil de Alumno</button>
+            <button *ngIf="rol === 'profesor'" class="btn btn-primary" (click)="irProfesorPerfil()">Volver al Perfil de Profesor</button>
+          </div>
+
+    </form>
+  </div>

@@ -1,0 +1,30 @@
+
+  <div class="container">
+    <h1 class="text-center">Inscripción a Materias</h1>
+
+    <form   (ngSubmit)= "inscribirse()"> 
+      
+      <div class="mb-3">
+        <label for="materias" class="form-label">Materias</label>
+        <select multiple class="form-select"  id="materias" name="materias" [(ngModel)]="materiaInscripta" multiple required >
+          <option value="matematica">matematica</option>
+          <option value="ingles">ingles</option>
+          <option value="programacion">programacion</option>
+          <option value="laboratorio">laboratorio</option>
+          <option value="fisica">fisica</option>
+          <option value="economia">economia</option>
+ 
+        </select>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Inscribirse</button>
+      <div class="mt-3">
+        <button *ngIf="rol === 'alumno'" class="btn btn-primary" (click)="irAlumnoPerfil()">Volver al Perfil de Alumno</button>
+        <button *ngIf="rol === 'profesor'" class="btn btn-primary" (click)="irProfesorPerfil()">Volver al Perfil de Profesor</button>
+      </div>
+
+  </form>
+
+ 
+  
+  </div>

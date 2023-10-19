@@ -1,0 +1,94 @@
+
+<head>
+  <title>Perfil del Profesor</title>
+  <!-- Aquí se encuentra el bloque de estilos que definimos -->
+  <style>
+    .profile-background {
+      background-color: #333; /* Color de fondo más oscuro */
+      color: #fff; /* Color del texto en blanco para mejor contraste */
+      padding: 20px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+
+<div class="container mt-5 profile-background">
+  <h1 class="text-center">Perfil del Profesor</h1>
+  <div class="row mt-3">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" class="form-control" id="name" [(ngModel)]="profesor.firstname" disabled>
+          </div>
+          <div class="form-group">
+            <label for="phone">Apellido</label>
+            <input type="tel" class="form-control" id="phone" [(ngModel)]="profesor.lastname" disabled>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" [(ngModel)]="profesor.email" disabled>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-6 offset-md-3">
+      <h3>Materias que dicta el profesor</h3>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let materia of profesor.materias">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <span>{{ materia.name }}</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <a class="btn btn-primary mr-2" [routerLink]="['/detalles-materia', materia.id]">Detalles</a>
+             <button class="btn btn-success" *ngIf="materia.examen == null"  [routerLink]="['/crearExamen',materia.id]">Crear Examen</button>
+             <button class="btn btn-success" *ngIf="materia.examen != null"  [routerLink]="['/crearExamen',materia.id]">ver Examen</button>
+          
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+
+  <div class="row mt-4" *ngIf="materiaSeleccionada">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h4>Detalle de la materia: {{ materiaSeleccionada }}</h4>
+          <!-- Aquí puedes mostrar más detalles de la materia -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="address">Dirección</label>
+            <textarea class="form-control" id="address" rows="4" disabled>123 Main St, City, Country</textarea>
+          </div>
+
+          <button class="btn btn-primary btn-block" (click)="inscribirse()">Seleccionar la materia a dictar</button>
+          <button class="btn btn-primary btn-block" (click)="actualizarDatos()">Actualizar Datos</button>
+          <button class="btn btn-danger" (click)="cerrarSesion()">Cerrar Sesión</button>
+          <button class="btn btn-danger" (click)="eliminarCuenta()">Eliminar Cuenta</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    

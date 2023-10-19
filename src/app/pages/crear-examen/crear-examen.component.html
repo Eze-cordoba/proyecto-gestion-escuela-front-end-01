@@ -1,0 +1,44 @@
+<div class="container mt-5">
+    <h1 class="text-center">Crear Examen</h1>
+    <form (submit)="crearExamen()">
+      <div class="mb-3">
+        <label for="titulo" class="form-label">Título del Examen</label>
+        <input type="text" class="form-control" id="titulo" [(ngModel)]="titulo" name="titulo" required>
+      </div>
+      <div class="mb-3" *ngFor="let pregunta of preguntas; let i = index">
+        <h4>Pregunta {{ i + 1 }}</h4>
+        <div class="form-group">
+          <label for="pregunta{{ i }}">Enunciado</label>
+          <input type="text" class="form-control input-grande"  id="pregunta{{ i }}" [(ngModel)]="preguntas[i].enunciado" name="pregunta{{ i }}" required>
+        </div>
+        <div *ngIf="pregunta.respuestas">
+          <div class="form-group" *ngFor="let respuesta of pregunta.respuestas; let j = index">
+            <div class="input-group">
+           
+              <h3>Respuestas</h3>
+              
+              <input type="text" class="form-control" [(ngModel)]="preguntas[i].respuestas[j].contenido" name="respuesta{{ i }}" required>
+           
+              <div class="form-check">
+                <input class="form-check-input" type="radio" [(ngModel)]="preguntas[i].respuestas[j].esCorrecta" [value]="true" name="fradio{{ i }}{{ j }}">
+                <label class="form-check-label">Verdadera</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" [(ngModel)]="preguntas[i].respuestas[j].esCorrecta" [value]="false" name="radio{{ i }}{{ j }}">
+                <label class="form-check-label">Falsa</label>
+              </div>
+              
+            </div>
+          </div>
+          <button type="button" class="btn btn-danger" (click)="eliminarPregunta(i)">Eliminar Pregunta</button>
+        </div>
+      </div>  
+      <button type="button" class="btn btn-primary" (click)="agregarPregunta()">Agregar Pregunta</button>
+      <button type="submit" class="btn btn-success">Crear Examen</button>
+   
+      
+        <button class="btn btn-primary" (click)="irProfesorPerfil()">Volver al Perfil de Profesor</button>
+   
+
+    </form>
+  </div>
